@@ -89,7 +89,7 @@ public class TastingSheetRestController {
 	
 	// GET all Tasting Sheets in the DB
 	@GetMapping("/tastings")
-	// @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<Map<String, Object>> getAllTastingsPage(
 		      @RequestParam(required = false) String varietal,
 		      @RequestParam(defaultValue = "0") int page,
@@ -166,7 +166,7 @@ public class TastingSheetRestController {
 	
 	// GET Tasting Sheet by it's ID.
 		@GetMapping("/tastings/{id}")
-		// @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+		@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 		public ResponseEntity<TastingSheet> getTastingById(@PathVariable("id") Long id){
 			// Optional<TastingSheet> tastingData = tastingSheetRepo.findById(id);
 			
@@ -180,7 +180,7 @@ public class TastingSheetRestController {
 		
 		// POST a new Tasting Sheet to the DB. 
 		@PostMapping("/tastings")
-		// @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+		@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 		public ResponseEntity<TastingSheet> createTasting(@RequestBody TastingSheet tasting) {
 			System.out.println("New ticket route has been hit...");
 			System.out.println(tasting.getVintage());
@@ -206,7 +206,7 @@ public class TastingSheetRestController {
 		
 		// PUT to update a Tasting Sheet in the DB.
 		@PutMapping("/tastings/{id}")
-		// @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+		@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 		public ResponseEntity<TastingSheet> updateTasting(@PathVariable("id") long id, @RequestBody TastingSheet tasting){
 			// Optional<TastingSheet> tastingData = tastingSheetRepo.findById(id);
 			
@@ -227,7 +227,7 @@ public class TastingSheetRestController {
 		
 		// DELETE to remove a Tasting Sheet from the DB.
 		@DeleteMapping("/tastings/{id}")
-		// @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+		@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 		public ResponseEntity<HttpStatus> deleteTasting(@PathVariable("id") long id){
 			try {
 				tastingSheetRepo.deleteById(id);
@@ -240,7 +240,7 @@ public class TastingSheetRestController {
 		
 		// ** DELETE to remove ALL Tasting Sheets from a user's log. **
 		 @DeleteMapping("/tastings")
-		 // @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+		 @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 		  public ResponseEntity<HttpStatus> deleteAllTastings() {
 		    try {
 		    	tastingSheetRepo.deleteAll();
